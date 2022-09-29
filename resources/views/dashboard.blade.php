@@ -1,5 +1,5 @@
-@extends('layouts.main');
-@section('container');
+@extends('layouts.main')
+@section('container')
 <body>
   <!-- Loader -->
   <!-- <div id="preloader">
@@ -20,7 +20,7 @@
     <!-- Start Page Content -->
     <main class="page-content bg-light">
       <!-- Top Header -->
-      @include('header')
+      @include('partials.header')
       <!-- Top Header -->
 
       <div class="container-fluid">

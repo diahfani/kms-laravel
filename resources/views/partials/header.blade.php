@@ -177,7 +177,7 @@
             >
               <a
                 class="dropdown-item d-flex align-items-center text-dark pb-3"
-                href="profile.html"
+                href="{{ route('profile') }}"
               >
                 <img
                   src="assets/images/client/05.jpg"
@@ -214,7 +214,7 @@
                   ></span>
                   Lockscreen</a
                 > -->
-              <a class="dropdown-item text-dark" href="login.html"
+              <a class="dropdown-item text-dark" href="{{ route('login') }}"
                 ><span class="mb-0 d-inline-block me-1"
                   ><i class="ti ti-logout"></i
                 ></span>

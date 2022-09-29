@@ -24,7 +24,7 @@
       <!-- Top Header -->
 
       <div class="container-fluid">
-        <div class="layout-specing">
+        <div class="layout-specing" style="padding: 50px 14px 24px!important">
           <div class="d-md-flex justify-content-between align-items-center">
             <h5 class="mb-0">Dosen</h5>
 
