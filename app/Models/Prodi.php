@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fakultas extends Model
+class Prodi extends Model
 {
     use HasFactory;
 
@@ -13,8 +13,13 @@ class Fakultas extends Model
         'id'
     ];
 
-    public function prodis()
+    public function fakultas()
     {
-        return $this->hasMany(Prodi::class);
+        return $this->belongsTo(Fakultas::class);
+    }
+
+    public function bidangIlmu()
+    {
+        return $this->hasMany(BidangIlmu::class);
     }
 }

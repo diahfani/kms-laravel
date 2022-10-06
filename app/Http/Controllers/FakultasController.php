@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Fakultas;
 
 class FakultasController extends Controller
 {
     public function index()
     {
         return view('fakultas', [
-            'title' => 'Fakultas'
+            'title' => 'Fakultas',
+            'fakultas' => Fakultas::all()
         ]);
         // $fakultas = \App\Models\fakultas::all();
         // return view('fakultas.index', ['fakultas' => $fakultas]);

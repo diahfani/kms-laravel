@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('container')
+{{-- @dd($fakultas[0]['nama']) --}}
     
 <body>
   <!-- Loader -->
@@ -68,6 +69,7 @@
                   </thead>
                   <tbody>
                     <!-- Start -->
+                    @foreach ($fakultas as $f)
                     <tr>
                       <th class="p-3">1</th>
                       <td class="p-3">
@@ -78,7 +80,8 @@
                                 class="avatar avatar-ex-small rounded-circle shadow"
                                 alt=""
                               /> -->
-                          <span class="ms-2">Fakultas Ilmu Komputer</span>
+                          
+                          <span class="ms-2">{{ $f->nama }}</span>
                         </div>
                         <!-- </a> -->
                       </td>
@@ -92,6 +95,7 @@
 
                       </td>
                     </tr>
+                    @endforeach
                     <!-- End -->
                   </tbody>
                 </table>
