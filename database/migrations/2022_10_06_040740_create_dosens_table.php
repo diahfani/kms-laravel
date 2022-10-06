@@ -24,9 +24,6 @@ class CreateDosensTable extends Migration
             $table->string('status')->nullable();
             $table->timestamps();
         });
-        // Schema::table('dosens', function (Blueprint $table) {
-        //     $table->foreignId('bidangilmu_id')->constrained('bidangilmus')->onDelete('cascade')->onUpdate('cascade');
-        // });
     }
 
     /**

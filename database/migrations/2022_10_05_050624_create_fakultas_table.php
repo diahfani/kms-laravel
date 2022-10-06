@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Prodi;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,7 @@ class CreateFakultasTable extends Migration
         Schema::create('fakultas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

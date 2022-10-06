@@ -1,5 +1,6 @@
 @extends('layouts.main');
 @section('container');
+{{-- @dd($prodi); --}}
 <body>
   <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
@@ -59,6 +60,7 @@
                   </thead>
                   <tbody>
                     <!-- Start -->
+                    @foreach ($prodi as $p)
                     <tr>
                       <th class="p-3">1</th>
                       <td class="p-3">
@@ -69,7 +71,7 @@
                                 class="avatar avatar-ex-small rounded-circle shadow"
                                 alt=""
                               /> -->
-                          <span class="ms-2">Teknik Informatika</span>
+                          <span class="ms-2">{{ $p->nama_prodi }}</span>
                         </div>
                         <!-- </a> -->
                       </td>
@@ -80,7 +82,7 @@
                                 class="avatar avatar-ex-small rounded-circle shadow"
                                 alt=""
                               /> -->
-                          <span class="ms-2">Fakultas Ilmu Komputer</span>
+                          <span class="ms-2">{{ $p->fakultas->nama }}</span>
                         </div>
                       </td>
                       <td class="text-center p-3">
@@ -93,6 +95,7 @@
 
                       </td>
                     </tr>
+                    @endforeach
                     <!-- End -->
                   </tbody>
                 </table>

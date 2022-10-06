@@ -37,23 +37,27 @@
                 <label class="mb-0">Fakultas <span style="color:red;">*</span></label>
                 <select required class="form-control">
                   <option selected>--Pilih Fakultas--</option>
-                  <option value="fasilkom">Fakultas Ilmu Komputer</option>
-                  <option value="fisip">Fakultas Ilmu Sosial dan Politik</option>
+                  @foreach ($fakultas as $f)
+                  <option value="fasilkom">{{ $f->nama }}</option>
+                  {{-- <option value="fisip">Fakultas Ilmu Sosial dan Politik</option>
                   <option value="fikes">Fakultas Ilmu Kesehatan</option>
                   <option value="fkip">Fakultas Keguruan dan Ilmu Pendidikan</option>
                   <option value="ft">Fakultas Teknik</option>
                   <option value="fai">Fakultas Agama Islam</option>
                   <option value="fh">Fakultas Hukum</option>
                   <option value="fe">Fakultas Ekonomi</option>
-                  <option value="fp">Fakultas Pertanian</option>
+                  <option value="fp">Fakultas Pertanian</option> --}}
+                  @endforeach
                 </select>
               </div>
               <div class="col">
                 <label class="mb-0">Program Studi <span style="color:red;">*</span></label>
                 <select required class="form-control">
                   <option selected>--Pilih Program Studi--</option>
-                  <option value="informatika">Informatika</option>
-                  <option value="Sistem Informasi">Sistem Informasi</option>
+                  @foreach($prodi as $p)
+                  <option value="informatika">{{ $p->nama_prodi }}</option>
+                  @endforeach
+                  {{-- <option value="Sistem Informasi">Sistem Informasi</option> --}}
                 </select>
               </div>
               <div class="col">
@@ -98,6 +102,7 @@
                   </thead>
                   <tbody>
                     <!-- Start -->
+                    @foreach ($bidang_ilmu as $bi)
                     <tr>
                       <th class="p-3">1</th>
                       <td class="p-3">
@@ -108,7 +113,7 @@
                                 class="avatar avatar-ex-small rounded-circle shadow"
                                 alt=""
                               /> -->
-                          <span class="ms-2">Data Mining</span>
+                          <span class="ms-2">{{ $bi->nama }}</span>
                         </div>
                         <!-- </a> -->
                       </td>
@@ -122,6 +127,7 @@
 
                       </td>
                     </tr>
+                    @endforeach
                     <!-- End -->
                   </tbody>
                 </table>
