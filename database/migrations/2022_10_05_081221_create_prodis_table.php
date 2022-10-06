@@ -32,4 +32,3 @@ class CreateProdisTable extends Migration
         Schema::dropIfExists('prodis');
     }
 }
-
