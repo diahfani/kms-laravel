@@ -16,4 +16,12 @@ class FakultasController extends Controller
         // $fakultas = \App\Models\fakultas::all();
         // return view('fakultas.index', ['fakultas' => $fakultas]);
     }
+
+    public function store()
+    {
+        return view('fakultas', [
+            'title' => 'Tambah Fakultas',
+            'fakultas' => new Fakultas()
+        ]);
+    }
 }

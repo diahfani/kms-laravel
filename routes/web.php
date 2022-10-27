@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/', [AuthController::class, 'login'])->name('login');
 
 Route::get('/forgotpassword', [AuthController::class, 'forgotpassword'])->name('forgotpassword');
 

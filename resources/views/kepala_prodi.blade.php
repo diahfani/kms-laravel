@@ -1,6 +1,7 @@
-  
+
   @extends('layouts.main');
   @section('container')
+  {{-- @dd($identity) --}}
   <body>
     <!-- Loader -->
     <!-- <div id="preloader">
@@ -91,23 +92,24 @@
                     </thead>
                     <tbody>
                       <!-- Start -->
+                      @foreach ($kaprodi as $kaprodi)
                       <tr>
                         <th class="p-3">1</th>
                         <td class="p-3">
                           <!-- <a href="#" class="text-center"> -->
                           <div class="d-flex align-items-center">
-                            <span class="ms-2">Betha Nurinasari, M.Kom</span>
+                            <span class="ms-2">{{ $kaprodi->nama }}</span>
                           </div>
                           <!-- </a> -->
                         </td>
                         <td class="p-3">
                           <div class="d-flex align-items-center">
-                            <span class="ms-2">Teknik Informatika</span>
+                            <span class="ms-2">{{ $kaprodi->prodi->nama_prodi }}</span>
                           </div>
                         </td>
                         <td class="p-3">
                           <div class="d-flex align-items-center">
-                            <span class="ms-2">Fakultas Ilmu Komputer</span>
+                            <span class="ms-2">{{ $kaprodi->prodi->fakultas->nama }}</span>
                           </div>
                         </td>
                         <td class="text-center p-3">
@@ -129,6 +131,7 @@
                             >Hapus</a -->
                         </td>
                       </tr>
+                      @endforeach
                       <!-- End -->
                     </tbody>
                   </table>

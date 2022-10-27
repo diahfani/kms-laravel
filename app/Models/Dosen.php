@@ -11,6 +11,7 @@ class Dosen extends Model
 
     protected $guarded = ['id'];
 
+    // protected $table = 'dosen';
     public function prodi()
     {
         return $this->belongsTo(Prodi::class);
@@ -19,5 +20,10 @@ class Dosen extends Model
     public function bidangilmu()
     {
         return $this->belongsTo(BidangIlmu::class);
+    }
+
+    public function fakultas()
+    {
+        return $this->belongsTo(Fakultas::class);
     }
 }

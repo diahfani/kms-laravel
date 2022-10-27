@@ -20,6 +20,7 @@ class CreateDosensTable extends Migration
             $table->string('email');
             $table->foreignId('prodi_id')->constrained('prodis')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('bidangilmu_id')->constrained('bidang_ilmus')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('fakultas_id')->constrained('fakultas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('jabatan');
             $table->string('status')->nullable();
             $table->timestamps();

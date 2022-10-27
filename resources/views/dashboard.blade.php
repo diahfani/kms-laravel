@@ -52,18 +52,18 @@
                     <i class="uil uil-user-circle fs-4 mb-0"></i>
                   </div>
                   <div class="flex-1 ms-3">
-                    <h6 class="mb-0 text-muted">Visitor</h6>
+                    <h6 class="mb-0 text-muted">Fakultas</h6>
                     <p class="fs-5 text-dark fw-bold mb-0">
-                      <span class="counter-value" data-target="4589"
-                        >2100</span
+                      <span class="counter-value" data-target="9"
+                        >1</span
                       >
                     </p>
                   </div>
                 </div>
-
+{{--
                 <span class="text-danger"
                   ><i class="uil uil-chart-down"></i> 0.5%</span
-                >
+                > --}}
               </a>
             </div>
             <!--end col-->
@@ -75,21 +75,21 @@
               >
                 <div class="d-flex align-items-center">
                   <div class="icon text-center rounded-pill">
-                    <i class="uil uil-usd-circle fs-4 mb-0"></i>
+                    <i class="uil uil-books-circle fs-4 mb-0"></i>
                   </div>
                   <div class="flex-1 ms-3">
-                    <h6 class="mb-0 text-muted">Revenue</h6>
+                    <h6 class="mb-0 text-muted">Program Studi</h6>
                     <p class="fs-5 text-dark fw-bold mb-0">
-                      $<span class="counter-value" data-target="48575"
-                        >35214</span
+                      <span class="counter-value" data-target="34"
+                        >0</span
                       >
                     </p>
                   </div>
                 </div>
 
-                <span class="text-success"
+                {{-- <span class="text-success"
                   ><i class="uil uil-arrow-growth"></i> 3.84%</span
-                >
+                > --}}
               </a>
             </div>
             <!--end col-->
@@ -104,18 +104,18 @@
                     <i class="uil uil-shopping-bag fs-4 mb-0"></i>
                   </div>
                   <div class="flex-1 ms-3">
-                    <h6 class="mb-0 text-muted">Orders</h6>
+                    <h6 class="mb-0 text-muted">Bidang Ilmu</h6>
                     <p class="fs-5 text-dark fw-bold mb-0">
-                      <span class="counter-value" data-target="4800"
-                        >3402</span
+                      <span class="counter-value" data-target="53"
+                        >0</span
                       >
                     </p>
                   </div>
                 </div>
 
-                <span class="text-success"
+                {{-- <span class="text-success"
                   ><i class="uil uil-arrow-growth"></i> 1.46%</span
-                >
+                > --}}
               </a>
             </div>
             <!--end col-->
@@ -130,16 +130,16 @@
                     <i class="uil uil-store fs-4 mb-0"></i>
                   </div>
                   <div class="flex-1 ms-3">
-                    <h6 class="mb-0 text-muted">Items</h6>
+                    <h6 class="mb-0 text-muted">Kaprodi</h6>
                     <p class="fs-5 text-dark fw-bold mb-0">
-                      <span class="counter-value" data-target="145">23</span>
+                      <span class="counter-value" data-target="34">0</span>
                     </p>
                   </div>
                 </div>
 
-                <span class="text-muted"
+                {{-- <span class="text-muted"
                   ><i class="uil uil-analysis"></i> 0.0%</span
-                >
+                > --}}
               </a>
             </div>
             <!--end col-->
@@ -156,21 +156,21 @@
                   <div class="flex-1 ms-3">
                     <h6 class="mb-0 text-muted">Users</h6>
                     <p class="fs-5 text-dark fw-bold mb-0">
-                      <span class="counter-value" data-target="9">1.5</span>M
+                      <span class="counter-value" data-target="3200">0</span>
                     </p>
                   </div>
                 </div>
 
-                <span class="text-danger"
+                {{-- <span class="text-danger"
                   ><i class="uil uil-chart-down"></i> 0.5%</span
-                >
+                > --}}
               </a>
             </div>
             <!--end col-->
           </div>
           <!--end row-->
 
-          <div class="row">
+          {{-- <div class="row">
             <div class="col-xl-8 col-lg-7 mt-4">
               <div class="card shadow border-0 p-4 pb-0 rounded">
                 <div class="d-flex justify-content-between">
@@ -310,10 +310,10 @@
               </div>
             </div>
             <!--end col-->
-          </div>
+          </div> --}}
           <!--end row-->
 
-          <div class="row">
+          {{-- <div class="row">
             <div class="col-xl-4">
               <div class="row">
                 <div class="col-xl-12 mt-4">
@@ -743,7 +743,7 @@
               </div>
             </div>
             <!--end col-->
-          </div>
+          </div> --}}
           <!--end row-->
         </div>
       </div>

@@ -21,11 +21,11 @@
               <form>
                 <a href="index.html"
                   ><img
-                    src="assets/images/logo-icon.png"
+                    src="assets/images/download.png"
                     class="avatar avatar-small mb-4 d-block mx-auto"
                     alt=""
                 /></a>
-                <h5 class="mb-3 text-center">Please sign in</h5>
+                <h5 class="mb-3 text-center">Silahkan Login</h5>
 
                 <div class="form-floating mb-2">
                   <input

@@ -283,7 +283,7 @@
         <div class="modal-body p-3 pt-4">
 
           <div class="mt-4 mt-sm-0">
-            <form>
+            <form method="POST" action="">
               <div class="row">
                 <div class="col-12">
                   <div class="mb-3">
