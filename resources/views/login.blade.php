@@ -49,7 +49,7 @@
                     id="floatingInput"
                     {{-- placeholder="name@example.com" --}}
                     name="email"
-                    autofocus
+                    {{-- autofocus --}}
                     required
                     {{-- value={{ old('email') }} --}}
                   />

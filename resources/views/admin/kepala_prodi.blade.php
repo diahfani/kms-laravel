@@ -56,6 +56,26 @@
                 >Tambah Data</a
               >
             </div>
+            @if(session()->has('success'))
+            <div class="mt-3">
+                <div class="d-flex justify-content-start mt-sm-0">
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      {{ session('success') }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+          @endif
+            @error('email')
+            <div class="mt-3">
+                <div class="d-flex justify-content-start mt-sm-0">
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      {{ $message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            @enderror
 
             <div class="row">
               <div class="col-12 mt-4">
@@ -94,7 +114,7 @@
                       <!-- Start -->
                       @foreach ($kaprodi as $kaprodi)
                       <tr>
-                        <th class="p-3">1</th>
+                        <th class="p-3">{{ $loop->iteration }}</th>
                         <td class="p-3">
                           <!-- <a href="#" class="text-center"> -->
                           <div class="d-flex align-items-center">
@@ -217,7 +237,8 @@
 
           <div class="modal-body p-3 pt-4">
             <div class="mt-4 mt-sm-0">
-              <form>
+              <form method="POST" action="kepala-prodi/posts">
+                @csrf
                 <div class="row">
                   <div class="col-12">
                     <div class="mb-3">
@@ -225,13 +246,54 @@
                         >Nama <span class="text-danger">*</span></label
                       >
                       <input
-                        name="name"
-                        id="name"
+                        name="nama"
+                        id="nama"
                         type="text"
                         class="form-control"
+                        required
                       />
                     </div>
                   </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label class="form-label"
+                        >NIDN/NIP/NIS <span class="text-danger">*</span></label
+                      >
+                      <input
+                        name="nip"
+                        id="nip"
+                        type="text"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label class="form-label"
+                        >Email <span class="text-danger">*</span></label
+                      >
+                      <input
+                        name="email"
+                        id="email"
+                        type="email"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                </div>
+                {{-- <input
+                  name="status"
+                  id="status"
+                  type="text"
+                  class="form-control"
+                  value="Kaprodi"
+                  hidden
+                /> --}}
                 </div>
                 <div class="row">
                   <div class="col-12">
@@ -239,40 +301,32 @@
                       <label class="form-label"
                         >Program Studi <span class="text-danger">*</span></label
                       >
-                      <input
-                        name="name"
-                        id="name"
-                        type="text"
-                        class="form-control"
-                      />
+                      <select required class="form-control" name="prodi_id">
+                        <option selected>--Pilih Program Studi--</option>
+                        @foreach($prodi as $p)
+                        <option value="{{ $p->id }}">{{ $p->nama_prodi }}</option>
+                        @endforeach
+                        {{-- <option value="Sistem Informasi">Sistem Informasi</option> --}}
+                      </select>
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                   <div class="col-12">
                     <div class="mb-3">
                       <label class="form-label"
                         >Pilih Fakultas
                         <span class="text-danger">*</span></label
                       >
-                      <select class="form-control">
-                        <option value="fasilkom">Fakultas Ilmu Komputer</option>
-                        <option value="fisip">
-                          Fakultas Ilmu Sosial dan Politik
-                        </option>
-                        <option value="fikes">Fakultas Ilmu Kesehatan</option>
-                        <option value="fkip">
-                          Fakultas Keguruan dan Ilmu Pendidikan
-                        </option>
-                        <option value="ft">Fakultas Teknik</option>
-                        <option value="fai">Fakultas Agama Islam</option>
-                        <option value="fh">Fakultas Hukum</option>
-                        <option value="fe">Fakultas Ekonomi</option>
-                        <option value="fp">Fakultas Pertanian</option>
+                      <select required class="form-control" name="fakultas">
+                        <option selected>--Pilih Fakultas--</option>
+                        @foreach($fakultas as $f)
+                        <option value="{{ $f->id }}">{{ $f->nama }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 <!--end col-->
                 <div class="text-end">
                   <button type="submit" class="btn btn-primary">

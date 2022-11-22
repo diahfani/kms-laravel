@@ -56,17 +56,16 @@
                 <button class="btn btn-primary mt-4" style="padding: 5px; width: 70px;">Pilih</button>
               </div>
             </div>
-
-            <!-- <nav aria-label="breadcrumb" class="d-inline-block">
-                <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
-                  <li class="breadcrumb-item text-capitalize">
-                    <a href="index.html">Dashboard</a>
-                  </li>
-                  <li class="breadcrumb-item text-capitalize">
-                    <a href="#">Bidang Ilmu</a>
-                  </li>
-                </ul>
-              </nav> -->
+            @if(session()->has('success'))
+            <div class="mt-3">
+                <div class="d-flex justify-content-start mt-sm-0">
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      {{ session('success') }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+          @endif
           </div>
 
           <div class="row">
@@ -96,7 +95,7 @@
                     <!-- Start -->
                     @foreach ($bidang_ilmu as $bi)
                     <tr>
-                      <th class="p-3">1</th>
+                      <th class="p-3">{{ $loop->iteration }}</th>
                       <td class="p-3">
                         <!-- <a href="#" class="text-center"> -->
                         <div class="d-flex align-items-center">
@@ -185,23 +184,34 @@
 
         <div class="modal-body p-3 pt-4">
           <div class="mt-4 mt-sm-0">
-            <form>
+            <form method="POST" action="bidang-ilmu/posts">
+                @csrf
                 <div class="row">
                   <div class="col-12">
                     <div class="mb-3">
                       <label class="form-label">Nama Bidang Ilmu
                         <span class="text-danger">*</span></label>
-                      <input name="name" id="name" type="text" class="form-control" />
+                      <input name="nama" id="nama" type="text" class="form-control" />
                     </div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Program Studi <span class="text-danger">*</span></label>
+                    <select required class="form-control" name="prodi_id">
+                      <option selected>--Pilih Program Studi--</option>
+                      @foreach($prodi as $p)
+                      <option value="{{ $p->id }}">{{ $p->nama_prodi }}</option>
+                      @endforeach
+                      {{-- <option value="Sistem Informasi">Sistem Informasi</option> --}}
+                    </select>
                   </div>
                   <!--end col-->
                   <div class="text-end">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary mt-3">
                       Tambah Bidang Ilmu
                     </button>
                   </div>
                   <!--end col-->
-                  <!-- </div> -->
+                  </div>
             </form>
           </div>
           <!--end col-->

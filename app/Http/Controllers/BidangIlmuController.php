@@ -18,4 +18,16 @@ class BidangIlmuController extends Controller
             'prodi' => Prodi::all(),
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'prodi_id' => 'required',
+        ]);
+
+        if (BidangIlmu::create($validatedData)) {
+            return redirect('bidang-ilmu')->with('success', 'Bidang ilmu berhasil ditambahkan');
+        }
+    }
 }
