@@ -1,22 +1,22 @@
 @extends('layouts.main');
 @section('container');
+{{-- @dd($prodi); --}}
 <body>
-
   <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
-    @include('partials.sidebar');
+    @include('partials.admin.sidebar');
     <!-- sidebar-wrapper  -->
 
     <!-- Start Page Content -->
     <main class="page-content bg-light">
       <!-- Top Header -->
-      @include('partials.header');
+      @include('partials.admin.header');
       <!-- Top Header -->
 
       <div class="container-fluid">
         <div class="layout-specing" style="padding: 50px 14px 24px!important">
           <div class="d-md-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Bidang Ilmu</h5>
+            <h5 class="mb-0">Data Program Studi</h5>
 
             <nav aria-label="breadcrumb" class="d-inline-block">
               <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -24,77 +24,43 @@
                   <a href="index.html">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item text-capitalize">
-                  <a href="#">Bidang Ilmu</a>
+                  <a href="#">Data Program Studi</a>
                 </li>
+                <!-- <li
+                    class="breadcrumb-item text-capitalize active"
+                    aria-current="page"
+                  >
+                    List
+                  </li> -->
               </ul>
             </nav>
           </div>
-
-          <div class="mt-4">
-            <div class="row">
-              <div class="col">
-
-                <label class="mb-0">Fakultas <span style="color:red;">*</span></label>
-                <select required class="form-control">
-                  <option selected>--Pilih Fakultas--</option>
-                  @foreach ($fakultas as $f)
-                  <option value="fasilkom">{{ $f->nama }}</option>
-                  {{-- <option value="fisip">Fakultas Ilmu Sosial dan Politik</option>
-                  <option value="fikes">Fakultas Ilmu Kesehatan</option>
-                  <option value="fkip">Fakultas Keguruan dan Ilmu Pendidikan</option>
-                  <option value="ft">Fakultas Teknik</option>
-                  <option value="fai">Fakultas Agama Islam</option>
-                  <option value="fh">Fakultas Hukum</option>
-                  <option value="fe">Fakultas Ekonomi</option>
-                  <option value="fp">Fakultas Pertanian</option> --}}
-                  @endforeach
-                </select>
-              </div>
-              <div class="col">
-                <label class="mb-0">Program Studi <span style="color:red;">*</span></label>
-                <select required class="form-control">
-                  <option selected>--Pilih Program Studi--</option>
-                  @foreach($prodi as $p)
-                  <option value="informatika">{{ $p->nama_prodi }}</option>
-                  @endforeach
-                  {{-- <option value="Sistem Informasi">Sistem Informasi</option> --}}
-                </select>
-              </div>
-              <div class="col">
-                <button class="btn btn-primary mt-4" style="padding: 5px; width: 70px;">Pilih</button>
-              </div>
-            </div>
-
-            <!-- <nav aria-label="breadcrumb" class="d-inline-block">
-                <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
-                  <li class="breadcrumb-item text-capitalize">
-                    <a href="index.html">Dashboard</a>
-                  </li>
-                  <li class="breadcrumb-item text-capitalize">
-                    <a href="#">Bidang Ilmu</a>
-                  </li>
-                </ul>
-              </nav> -->
+          <div class="d-md-flex justify-content-end mt-sm-0">
+            <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#add-prodi">Tambah
+              Data</a>
           </div>
+          @if(session()->has('success'))
+          <div class="d-flex justify-content-start mt-sm-0">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          </div>
+          @endif
 
           <div class="row">
             <div class="col-12 mt-4">
               <div class="table-responsive shadow rounded">
-                <div class="d-md-flex justify-content-end mt-sm-0">
-                  <a href="#" style="margin-right: 20px" class="btn btn-primary mt-3" data-bs-toggle="modal"
-                    data-bs-target="#add-bidang-ilmu">Tambah
-                    Data</a>
-                </div>
                 <table class="table table-center bg-white mb-0">
                   <thead>
                     <tr>
                       <th class="border-bottom p-3">No.</th>
                       <th class="text-center border-bottom p-3" style="min-width: 220px">
-                        Nama Bidang Ilmu
+                        Nama Program Studi
                       </th>
-                      <!-- <th class="text-center border-bottom p-3" style="min-width: 220px">
+                      <th class="text-center border-bottom p-3" style="min-width: 220px">
                         Fakultas
-                      </th> -->
+                      </th>
                       <th class="text-center border-bottom p-3" style="min-width: 200px">
                         Aksi
                       </th>
@@ -102,9 +68,10 @@
                   </thead>
                   <tbody>
                     <!-- Start -->
-                    @foreach ($bidang_ilmu as $bi)
+                    @foreach ($prodi as $p)
+
                     <tr>
-                      <th class="p-3">1</th>
+                      <th class="p-3">{{ $loop->iteration }}</th>
                       <td class="p-3">
                         <!-- <a href="#" class="text-center"> -->
                         <div class="d-flex align-items-center">
@@ -113,15 +80,25 @@
                                 class="avatar avatar-ex-small rounded-circle shadow"
                                 alt=""
                               /> -->
-                          <span class="ms-2">{{ $bi->nama }}</span>
+                          <span class="ms-2">{{ $p->nama_prodi }}</span>
                         </div>
                         <!-- </a> -->
                       </td>
+                      <td class="p-3">
+                        <div class="d-flex align-items-center">
+                          <!-- <img
+                                src="assets/images/client/01.jpg"
+                                class="avatar avatar-ex-small rounded-circle shadow"
+                                alt=""
+                              /> -->
+                          <span class="ms-2">{{ $p->fakultas->nama }}</span>
+                        </div>
+                      </td>
                       <td class="text-center p-3">
                         <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                          data-bs-target="#update-bidang-ilmu">Update</button>
+                          data-bs-target="#update-prodi">Update</button>
                         <button class="btn btn-sm btn-soft-primary ms-2" data-toggle="modal"
-                          data-target="#delete-bidang-ilmu">Hapus</button>
+                          data-target="#delete-prodi">Hapus</button>
                         <!-- <a href="#" class="btn btn-sm btn-soft-primary ms-2"
                             >Hapus</a -->
 
@@ -169,57 +146,68 @@
       </div>
       <!--end container-->
 
-      <!-- Footer Start -->
-      @include('partials.footer');
-      <!--end footer-->
+      @include('partials.admin.footer');
       <!-- End -->
     </main>
     <!--End page-content" -->
   </div>
   <!-- page-wrapper -->
 
-  <!-- Start Modal Tambah Program Studi-->
-  <div class="modal fade" id="add-bidang-ilmu" tabindex="-1" aria-labelledby="tambahmodel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header border-bottom p-3">
-          <h5 class="modal-title" id="tambahmodel">
-            Formulir Bidang Ilmu
-          </h5>
-          <button type="button" class="btn btn-icon btn-close" data-bs-dismiss="modal" id="close-modal">
-            <i class="uil uil-times fs-4 text-dark"></i>
-          </button>
-        </div>
+    <!-- Start Modal Tambah Program Studi-->
+    <div class="modal fade" id="add-prodi" tabindex="-1" aria-labelledby="tambahmodel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom p-3">
+            <h5 class="modal-title" id="tambahmodel">
+              Formulir Program Studi
+            </h5>
+            <button type="button" class="btn btn-icon btn-close" data-bs-dismiss="modal" id="close-modal">
+              <i class="uil uil-times fs-4 text-dark"></i>
+            </button>
+          </div>
 
-        <div class="modal-body p-3 pt-4">
-          <div class="mt-4 mt-sm-0">
-            <form>
+          <div class="modal-body p-3 pt-4">
+            <div class="mt-4 mt-sm-0">
+              <form method="post" action="program-studi/posts">
+                @csrf
                 <div class="row">
                   <div class="col-12">
                     <div class="mb-3">
-                      <label class="form-label">Nama Bidang Ilmu
+                      <label class="form-label">Pilih Fakultas
                         <span class="text-danger">*</span></label>
-                      <input name="name" id="name" type="text" class="form-control" />
+                        <select class="form-control" name="fakultas_id"id="fakultas">
+                            @foreach ($fakultas as $f )
+                            <option value="{{ $f->id }}">{{ $f->nama }}</option>
+                            @endforeach
+                      </select>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label class="form-label">Nama Program Studi
+                          <span class="text-danger">*</span></label>
+                        <input name="nama_prodi" required id="prodi" type="text" class="form-control @error('prodi') is-invalid @enderror" />
+                      </div>
+                    </div>
                   <!--end col-->
                   <div class="text-end">
                     <button type="submit" class="btn btn-primary">
-                      Tambah Bidang Ilmu
+                      Tambah Program Studi
                     </button>
                   </div>
                   <!--end col-->
                   <!-- </div> -->
-            </form>
+              </form>
+            </div>
+            <!--end col-->
+            <!-- </div> -->
+            <!--end row-->
           </div>
-          <!--end col-->
-          <!-- </div> -->
-          <!--end row-->
         </div>
       </div>
     </div>
-  </div>
-  <!-- End modal -->
+    <!-- End modal -->
 
   <!-- Offcanvas Start -->
   <div class="offcanvas offcanvas-end shadow" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -333,4 +321,3 @@
   <script src="assets/js/app.js"></script>
 </body>
 @endsection
-

@@ -12,6 +12,7 @@ class Dosen extends Model
     protected $guarded = ['id'];
 
     // protected $table = 'dosen';
+
     public function prodi()
     {
         return $this->belongsTo(Prodi::class);

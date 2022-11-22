@@ -1,21 +1,32 @@
-@extends('layouts.main');
+@extends('layouts.main')
 @section('container');
 <body>
+  <!-- Loader -->
+  <!-- <div id="preloader">
+      <div id="status">
+          <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+          </div>
+      </div>
+  </div> -->
+  <!-- Loader -->
+
   <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
-    @include('partials.sidebar');
+    @include('partials.admin.sidebar');
     <!-- sidebar-wrapper  -->
 
     <!-- Start Page Content -->
     <main class="page-content bg-light">
       <!-- Top Header -->
-      @include('partials.header');
+      @include('partials.admin.header');
       <!-- Top Header -->
 
       <div class="container-fluid">
         <div class="layout-specing" style="padding: 50px 14px 24px!important">
           <div class="d-md-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Mahasiswa</h5>
+            <h5 class="mb-0">Dosen</h5>
 
             <nav aria-label="breadcrumb" class="d-inline-block">
               <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -23,7 +34,7 @@
                   <a href="index.html">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item text-capitalize">
-                  <a href="#">Data Mahasiswa</a>
+                  <a href="#">Data Dosen</a>
                 </li>
                 <!-- <li
                   class="breadcrumb-item text-capitalize active"
@@ -55,13 +66,13 @@
                         class="text-center border-bottom p-3"
                         style="min-width: 220px"
                       >
-                        Nama Mahasiswa
+                        Nama Dosen
                       </th>
                       <th
                         class="text-center border-bottom p-3"
                         style="min-width: 220px"
                       >
-                        NPM
+                        NIP / NIS
                       </th>
                       <th
                         class="text-center border-bottom p-3"
@@ -73,13 +84,13 @@
                         class="text-center border-bottom p-3"
                         style="min-width: 200px"
                       >
-                        Tahun Masuk
+                        Program Studi
                       </th>
                       <th
                         class="text-center border-bottom p-3"
                         style="min-width: 200px"
                       >
-                        Program Studi
+                        Bidang Ilmu
                       </th>
                       <th
                         class="text-center border-bottom p-3"
@@ -106,24 +117,24 @@
                       </td>
                       <td class="p-3">
                         <div class="d-flex align-items-center">
-                          <span class="ms-2">18106631170194</span>
+                          <span class="ms-2">0041785423</span>
                         </div>
                       </td>
                       <td class="p-3">
                         <div class="d-flex align-items-center">
                           <span class="ms-2"
-                            >diah.aufa18194@student.unsika.ac.id</span
+                            >diah.aufa@staff.unsika.ac.id</span
                           >
                         </div>
                       </td>
                       <td class="p-3">
                         <div class="d-flex align-items-center">
-                          <span class="ms-2">2022</span>
+                          <span class="ms-2">Teknik Informatika</span>
                         </div>
                       </td>
                       <td class="p-3">
                         <div class="d-flex align-items-center">
-                          <span class="ms-2">Teknik Informatika</span>
+                          <span class="ms-2">Data Mining</span>
                         </div>
                       </td>
                       <td class="p-3">
@@ -203,7 +214,9 @@
       </div>
       <!--end container-->
 
-      @include('partials.footer');
+      <!-- Footer Start -->
+      @include('partials.admin.footer')
+      <!--end footer-->
       <!-- End -->
     </main>
     <!--End page-content" -->
@@ -221,7 +234,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header border-bottom p-3">
-          <h5 class="modal-title" id="tambahmodel">Formulir Mahasiswa</h5>
+          <h5 class="modal-title" id="tambahmodel">Formulir Dosen</h5>
           <button
             type="button"
             class="btn btn-icon btn-close"
@@ -239,8 +252,7 @@
                 <div class="col-12">
                   <div class="mb-3">
                     <label class="form-label"
-                      >Nama Mahasiswa
-                      <span class="text-danger">*</span></label
+                      >Nama Dosen <span class="text-danger">*</span></label
                     >
                     <input
                       name="namadosen"
@@ -255,7 +267,7 @@
                 <div class="col-12">
                   <div class="mb-3">
                     <label class="form-label"
-                      >NPM <span class="text-danger">*</span></label
+                      >NIP / NIS <span class="text-danger">*</span></label
                     >
                     <input
                       name="nis"
@@ -276,21 +288,6 @@
                       name="email"
                       id="email"
                       type="email"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="mb-3">
-                    <label class="form-label"
-                      >Tahun Masuk <span class="text-danger">*</span></label
-                    >
-                    <input
-                      name="bidangilmu"
-                      id="bidangilmu"
-                      type="text"
                       class="form-control"
                     />
                   </div>
@@ -336,6 +333,22 @@
                     <input
                       name="prodi"
                       id="prodi"
+                      type="text"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label class="form-label"
+                      >Bidang Keilmuan
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      name="bidangilmu"
+                      id="bidangilmu"
                       type="text"
                       class="form-control"
                     />
@@ -573,6 +586,5 @@
     </div>
   </div>
   <!-- Offcanvas End -->
-</body>  
+</body>
 @endsection
-

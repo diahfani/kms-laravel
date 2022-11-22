@@ -15,10 +15,25 @@
     <section class="bg-home bg-circle-gradiant d-flex align-items-center">
       <div class="bg-overlay bg-overlay-white"></div>
       <div class="container">
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        @endif
+        @if(session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('loginError') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        @endif
         <div class="row">
           <div class="col-12">
             <div class="card form-signin p-4 rounded shadow">
-              <form>
+              <form action="/" method="post">
+                @csrf
                 <a href="index.html"
                   ><img
                     src="assets/images/download.png"
@@ -30,11 +45,20 @@
                 <div class="form-floating mb-2">
                   <input
                     type="email"
-                    class="form-control"
+                    class="form-control  @error('email') is-invalid @enderror"
                     id="floatingInput"
-                    placeholder="name@example.com"
+                    {{-- placeholder="name@example.com" --}}
+                    name="email"
+                    autofocus
+                    required
+                    {{-- value={{ old('email') }} --}}
                   />
                   <label for="floatingInput">Email address</label>
+                  @error('email')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
                 </div>
                 <div class="form-floating mb-3">
                   <input
@@ -42,6 +66,9 @@
                     class="form-control"
                     id="floatingPassword"
                     placeholder="Password"
+                    name="password"
+                    id="password"
+                    required
                   />
                   <label for="floatingPassword">Password</label>
                 </div>

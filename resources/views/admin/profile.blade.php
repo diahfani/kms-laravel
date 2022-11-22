@@ -14,13 +14,13 @@
 
     <div class="page-wrapper toggled">
         <!-- sidebar-wrapper -->
-        @include('partials.sidebar')
+        @include('partials.admin.sidebar')
         <!-- sidebar-wrapper  -->
 
         <!-- Start Page Content -->
         <main class="page-content bg-light">
             <!-- Top Header -->
-            @include('partials.header')
+            @include('partials.admin.header')
             <!-- Top Header -->
 
             <div class="container-fluid">
@@ -128,7 +128,7 @@
                                                 <p class="text-muted fst-italic p-3 bg-light rounded">" There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour "</p>
                                             </div>
                                         </li>
-        
+
                                         <li class="mt-4">
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-flex align-items-center">
@@ -187,7 +187,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="card border-0 shadow rounded p-4 mt-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
@@ -478,7 +478,7 @@
                                             <span class="text-muted">16th August 2021</span>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="d-flex align-items-center mt-3">
                                         <img src="assets/images/blog/03.jpg" class="avatar avatar-small rounded" style="width: auto;" alt="">
                                         <div class="flex-1 ms-3">
@@ -494,7 +494,7 @@
             </div><!--end container-->
 
             <!-- Footer Start -->
-            @include('partials.footer')
+            @include('partials.admin.footer')
             <!--end footer-->
             <!-- End -->
         </main>
@@ -545,5 +545,5 @@
         </div>
     </div>
     <!-- Offcanvas End -->
-</body>    
+</body>
 @endsection

@@ -9,7 +9,7 @@ class FakultasController extends Controller
 {
     public function index()
     {
-        return view('fakultas', [
+        return view('admin/fakultas', [
             'title' => 'Fakultas',
             'fakultas' => Fakultas::all()
         ]);
@@ -17,11 +17,14 @@ class FakultasController extends Controller
         // return view('fakultas.index', ['fakultas' => $fakultas]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return view('fakultas', [
-            'title' => 'Tambah Fakultas',
-            'fakultas' => new Fakultas()
+        $validatedData = $request->validate([
+            'nama' => 'required',
         ]);
+
+        Fakultas::create($validatedData);
+
+        return redirect('fakultas')->with('success', 'Fakultas baru berhasil ditambahkan');
     }
 }

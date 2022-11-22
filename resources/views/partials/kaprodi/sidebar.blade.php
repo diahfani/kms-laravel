@@ -7,20 +7,19 @@
       <div class="sidebar-brand">
         <a href="index.html">
           <img
-            src="assets/images/logo-dark.png"
+            src="{{ url("assets/images/logo-dark.png") }}"
             height="24"
             class="logo-light-mode"
             alt=""
           />
           <img
-            src="assets/images/logo-light.png"
+            src="{{ url('assets/images/logo-light.png') }}"
             height="24"
             class="logo-dark-mode"
             alt=""
           />
           <span class="sidebar-colored">
             <h1 style="font-size: 2rem">KMS Unsika</h1>
-            <!-- <img src="assets/images/logo-light.png" height="24" alt="" /> -->
           </span>
         </a>
       </div>
@@ -38,7 +37,7 @@
             </span>
             <!-- <img src="assets/images/logo-light.png" height="24" alt="" /> -->
 
-            <a href="{{ route('dashboard') }}"><i class="ti ti-home me-2"></i> Dashboard</a>
+            <a href="{{ route('kaprodi-dashboard') }}"><i class="ti ti-home me-2"></i> Dashboard</a>
             <!-- </span> -->
         </li>
       </ul>
@@ -52,36 +51,19 @@
             >
               Master Data
             </span>
-            <a href="{{ route('fakultas') }}"
-              ><i class="ti ti-browser me-2"></i>Data Fakultas</a
+            <a href="{{ route('kaprodi_kurikulum') }}"
+              ><i class="ti ti-browser me-2"></i>Kurikulum</a
             >
           </li>
           <li class="sidebar">
-            <a href="{{ route('program-studi') }}"
-              ><i class="ti ti-apps me-2"></i>Data Program Studi</a
+            <a href="{{ route('kaprodi_mata-kuliah') }}"
+              ><i class="ti ti-apps me-2"></i>Mata Kuliah</a
             >
           </li>
           <li class="sidebar">
-            <a href="{{ route('bidang-ilmu') }}"
-              ><i class="ti ti-license me-2"></i>Data Bidang Ilmu</a
+            <a href="{{ route('kaprodi_tahun-ajaran') }}"
+              ><i class="ti ti-license me-2"></i>Tahun Ajaran</a
             >
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="javascript:void(0)"
-              ><i class="ti ti-user me-2"></i>Data User</a
-            >
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="{{ route('kepala-prodi') }}">Data Kepala Program Studi</a>
-                </li>
-                <li>
-                  <a href="{{ route('admin-prodi') }}">Data Admin Program Studi</a>
-                </li>
-                <li><a href="{{ route('dosen') }}">Data Dosen</a></li>
-                <li><a href="{{ route('mahasiswa') }}">Data Mahasiswa</a></li>
-              </ul>
-            </div>
           </li>
       </ul>
       <!-- sidebar-menu  -->

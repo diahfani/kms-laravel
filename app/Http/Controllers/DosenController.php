@@ -8,7 +8,7 @@ class DosenController extends Controller
 {
     public function index()
     {
-        return view('dosen', [
+        return view('admin/dosen', [
             'title' => 'Dosen'
         ]);
     }

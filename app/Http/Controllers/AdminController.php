@@ -8,15 +8,22 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('dashboard', [
+        return view('admin/dashboard', [
             'title' => 'Dashboard'
         ]);
     }
 
     public function profile()
     {
-        return view('profile', [
+        return view('admin/profile', [
             'title' => 'profile'
+        ]);
+    }
+
+    public function admin()
+    {
+        return view('admin/admin', [
+            'title' => 'Admin'
         ]);
     }
 }

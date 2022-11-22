@@ -1,22 +1,24 @@
-@extends('layouts.main');
-@section('container');
-{{-- @dd($prodi); --}}
+@extends('layouts.main')
+@section('container')
+{{-- @dd($fakultas[0]['nama']) --}}
+
 <body>
   <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
-    @include('partials.sidebar');
+    @include('partials.admin.sidebar');
     <!-- sidebar-wrapper  -->
 
     <!-- Start Page Content -->
     <main class="page-content bg-light">
       <!-- Top Header -->
-      @include('partials.header');
+      @include('partials.admin.header');
       <!-- Top Header -->
+
 
       <div class="container-fluid">
         <div class="layout-specing" style="padding: 50px 14px 24px!important">
           <div class="d-md-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Data Program Studi</h5>
+            <h5 class="mb-0">Data Fakultas</h5>
 
             <nav aria-label="breadcrumb" class="d-inline-block">
               <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -24,7 +26,7 @@
                   <a href="index.html">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item text-capitalize">
-                  <a href="#">Data Program Studi</a>
+                  <a href="#">Fakultas</a>
                 </li>
                 <!-- <li
                     class="breadcrumb-item text-capitalize active"
@@ -36,9 +38,17 @@
             </nav>
           </div>
           <div class="d-md-flex justify-content-end mt-sm-0">
-            <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#add-prodi">Tambah
+            <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#add-fakultas">Tambah
               Data</a>
           </div>
+          @if(session()->has('success'))
+          <div class="d-flex justify-content-start mt-sm-0">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          </div>
+          @endif
 
           <div class="row">
             <div class="col-12 mt-4">
@@ -48,10 +58,7 @@
                     <tr>
                       <th class="border-bottom p-3">No.</th>
                       <th class="text-center border-bottom p-3" style="min-width: 220px">
-                        Nama Program Studi
-                      </th>
-                      <th class="text-center border-bottom p-3" style="min-width: 220px">
-                        Fakultas
+                        Nama Fakultas
                       </th>
                       <th class="text-center border-bottom p-3" style="min-width: 200px">
                         Aksi
@@ -60,9 +67,9 @@
                   </thead>
                   <tbody>
                     <!-- Start -->
-                    @foreach ($prodi as $p)
+                    @foreach ($fakultas as $f)
                     <tr>
-                      <th class="p-3">1</th>
+                      <th class="p-3">{{ $loop->iteration }}</th>
                       <td class="p-3">
                         <!-- <a href="#" class="text-center"> -->
                         <div class="d-flex align-items-center">
@@ -71,25 +78,16 @@
                                 class="avatar avatar-ex-small rounded-circle shadow"
                                 alt=""
                               /> -->
-                          <span class="ms-2">{{ $p->nama_prodi }}</span>
+
+                          <span class="ms-2">{{ $f->nama }}</span>
                         </div>
                         <!-- </a> -->
                       </td>
-                      <td class="p-3">
-                        <div class="d-flex align-items-center">
-                          <!-- <img
-                                src="assets/images/client/01.jpg"
-                                class="avatar avatar-ex-small rounded-circle shadow"
-                                alt=""
-                              /> -->
-                          <span class="ms-2">{{ $p->fakultas->nama }}</span>
-                        </div>
-                      </td>
                       <td class="text-center p-3">
-                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                          data-bs-target="#update-prodi">Update</button>
-                        <button class="btn btn-sm btn-soft-primary ms-2" data-toggle="modal"
-                          data-target="#delete-prodi">Hapus</button>
+                        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                          data-bs-target="#update-fakultas">Update</a>
+                        <a href="#" class="btn btn-sm btn-soft-primary ms-2" data-bs-toggle="modal"
+                          data-bs-target="#delete-fakultas">Hapus</a>
                         <!-- <a href="#" class="btn btn-sm btn-soft-primary ms-2"
                             >Hapus</a -->
 
@@ -137,74 +135,116 @@
       </div>
       <!--end container-->
 
-      @include('partials.footer');
+      <!-- Start Modal Tambah Fakultas-->
+      <div class="modal fade" id="add-fakultas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-bottom p-3">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Formulir Fakultas
+              </h5>
+              <button type="button" class="btn btn-icon btn-close" data-bs-dismiss="modal" id="close-modal">
+                <i class="uil uil-times fs-4 text-dark"></i>
+              </button>
+            </div>
+
+            <div class="modal-body p-3 pt-4">
+              <div class="mt-4 mt-sm-0">
+                <form method="post" action="/fakultas/posts">
+                    @csrf
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label class="form-label">Nama Fakultas
+                          <span class="text-danger">*</span></label>
+                        <input name="nama" id="nama" type="text" required class="form-control @error('nama') is-invalid @enderror " />
+                      </div>
+                    </div>
+                    {{-- <div class="col-12">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Pilih status</option>
+                            <option value="1">One</option>
+                            <option value="0">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                    </div> --}}
+                    <!--end col-->
+
+                    <div class="text-end">
+                      <button type="submit" class="btn btn-primary">
+                        Tambah Fakultas
+                      </button>
+                    </div>
+                    <!--end col-->
+                    </div>
+                </form>
+              </div>
+              <!--end col-->
+              <!-- </div> -->
+              <!--end row-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End modal -->
+
+      <!-- Footer Start -->
+      @include('partials.admin.footer')
+      <!--end footer-->
       <!-- End -->
     </main>
     <!--End page-content" -->
   </div>
   <!-- page-wrapper -->
 
-    <!-- Start Modal Tambah Program Studi-->
-    <div class="modal fade" id="add-prodi" tabindex="-1" aria-labelledby="tambahmodel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header border-bottom p-3">
-            <h5 class="modal-title" id="tambahmodel">
-              Formulir Program Studi
-            </h5>
-            <button type="button" class="btn btn-icon btn-close" data-bs-dismiss="modal" id="close-modal">
-              <i class="uil uil-times fs-4 text-dark"></i>
-            </button>
-          </div>
-  
-          <div class="modal-body p-3 pt-4">
-            <div class="mt-4 mt-sm-0">
-              <form>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="mb-3">
-                      <label class="form-label">Pilih Fakultas
-                        <span class="text-danger">*</span></label>
-                        <select class="form-control">
-                          <option value="fasilkom">Fakultas Ilmu Komputer</option>
-                          <option value="fisip">Fakultas Ilmu Sosial dan Politik</option>
-                          <option value="fikes">Fakultas Ilmu Kesehatan</option>
-                          <option value="fkip">Fakultas Keguruan dan Ilmu Pendidikan</option>
-                          <option value="ft">Fakultas Teknik</option>
-                          <option value="fai">Fakultas Agama Islam</option>
-                          <option value="fh">Fakultas Hukum</option>
-                          <option value="fe">Fakultas Ekonomi</option>
-                          <option value="fp">Fakultas Pertanian</option>
-                      </select>
-                    </div>
+  <!-- Start Modal Update Fakultas-->
+  <div class="modal fade" id="update-fakultas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-bottom p-3">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Formulir Fakultas
+          </h5>
+          <button type="button" class="btn btn-icon btn-close" data-bs-dismiss="modal" id="close-modal">
+            <i class="uil uil-times fs-4 text-dark"></i>
+          </button>
+        </div>
+
+        <div class="modal-body p-3 pt-4">
+
+          <div class="mt-4 mt-sm-0">
+            <form>
+                @csrf
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label class="form-label">Nama Fakultas
+                      <span class="text-danger">*</span></label>
+                    <input name="nama" id="nama" type="text" class="form-control" />
                   </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="mb-3">
-                        <label class="form-label">Nama Program Studi
-                          <span class="text-danger">*</span></label>
-                        <input name="name" id="name" type="text" class="form-control" />
-                      </div>
-                    </div>
-                  <!--end col-->
-                  <div class="text-end">
-                    <button type="submit" class="btn btn-primary">
-                      Tambah Program Studi
-                    </button>
-                  </div>
-                  <!--end col-->
-                  <!-- </div> -->
-              </form>
-            </div>
-            <!--end col-->
-            <!-- </div> -->
-            <!--end row-->
+                </div>
+                <!--end col-->
+
+                <div class="text-end">
+                  <button type="submit" class="btn btn-primary">
+                    Update Fakultas
+                  </button>
+                </div>
+                <!--end col-->
+                </div>
+            </form>
           </div>
+          <!--end col-->
+          <!-- </div> -->
+          <!--end row-->
         </div>
       </div>
     </div>
-    <!-- End modal -->
-   
+  </div>
+  <!-- End modal -->
+
+
+
   <!-- Offcanvas Start -->
   <div class="offcanvas offcanvas-end shadow" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header p-4 border-bottom">
@@ -306,14 +346,6 @@
     </div>
   </div>
   <!-- Offcanvas End -->
-
-  <!-- javascript -->
-  <!-- JAVASCRIPT -->
-  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/libs/feather-icons/feather.min.js"></script>
-  <script src="assets/libs/simplebar/simplebar.min.js"></script>
-  <!-- Main Js -->
-  <script src="assets/js/plugins.init.js"></script>
-  <script src="assets/js/app.js"></script>
-</body>   
+</body>
 @endsection
+

@@ -14,19 +14,19 @@
 
   <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
-    @include('partials.sidebar');
+    @include('partials.admin.sidebar');
     <!-- sidebar-wrapper  -->
 
     <!-- Start Page Content -->
     <main class="page-content bg-light">
       <!-- Top Header -->
-      @include('partials.header');
+      @include('partials.admin.header');
       <!-- Top Header -->
 
       <div class="container-fluid">
         <div class="layout-specing" style="padding: 50px 14px 24px!important">
           <div class="d-md-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Dosen</h5>
+            <h5 class="mb-0">Admin</h5>
 
             <nav aria-label="breadcrumb" class="d-inline-block">
               <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -34,7 +34,7 @@
                   <a href="index.html">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item text-capitalize">
-                  <a href="#">Data Dosen</a>
+                  <a href="#">Data Admin</a>
                 </li>
                 <!-- <li
                   class="breadcrumb-item text-capitalize active"
@@ -66,31 +66,13 @@
                         class="text-center border-bottom p-3"
                         style="min-width: 220px"
                       >
-                        Nama Dosen
-                      </th>
-                      <th
-                        class="text-center border-bottom p-3"
-                        style="min-width: 220px"
-                      >
-                        NIP / NIS
+                        Nama
                       </th>
                       <th
                         class="text-center border-bottom p-3"
                         style="min-width: 200px"
                       >
                         Email
-                      </th>
-                      <th
-                        class="text-center border-bottom p-3"
-                        style="min-width: 200px"
-                      >
-                        Program Studi
-                      </th>
-                      <th
-                        class="text-center border-bottom p-3"
-                        style="min-width: 200px"
-                      >
-                        Bidang Ilmu
                       </th>
                       <th
                         class="text-center border-bottom p-3"
@@ -215,7 +197,7 @@
       <!--end container-->
 
       <!-- Footer Start -->
-      @include('partials.footer')
+      @include('partials.admin.footer')
       <!--end footer-->
       <!-- End -->
     </main>
@@ -234,7 +216,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header border-bottom p-3">
-          <h5 class="modal-title" id="tambahmodel">Formulir Dosen</h5>
+          <h5 class="modal-title" id="tambahmodel">Formulir Admin</h5>
           <button
             type="button"
             class="btn btn-icon btn-close"
@@ -252,27 +234,12 @@
                 <div class="col-12">
                   <div class="mb-3">
                     <label class="form-label"
-                      >Nama Dosen <span class="text-danger">*</span></label
+                      >Nama Admin <span class="text-danger">*</span></label
                     >
                     <input
                       name="namadosen"
                       id="namadosen"
                       type="text"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="mb-3">
-                    <label class="form-label"
-                      >NIP / NIS <span class="text-danger">*</span></label
-                    >
-                    <input
-                      name="nis"
-                      id="nis"
-                      type="number"
                       class="form-control"
                     />
                   </div>
@@ -319,37 +286,6 @@
                       name="password"
                       id="password"
                       type="password"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="mb-3">
-                    <label class="form-label"
-                      >Program Studi <span class="text-danger">*</span></label
-                    >
-                    <input
-                      name="prodi"
-                      id="prodi"
-                      type="text"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="mb-3">
-                    <label class="form-label"
-                      >Bidang Keilmuan
-                      <span class="text-danger">*</span></label
-                    >
-                    <input
-                      name="bidangilmu"
-                      id="bidangilmu"
-                      type="text"
                       class="form-control"
                     />
                   </div>

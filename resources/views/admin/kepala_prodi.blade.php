@@ -1,5 +1,7 @@
+
   @extends('layouts.main');
-  @section('container');
+  @section('container')
+  {{-- @dd($identity) --}}
   <body>
     <!-- Loader -->
     <!-- <div id="preloader">
@@ -14,19 +16,19 @@
 
     <div class="page-wrapper toggled">
       <!-- sidebar-wrapper -->
-      @include('partials.sidebar');
+      @include('partials.admin.sidebar');
       <!-- sidebar-wrapper  -->
 
       <!-- Start Page Content -->
       <main class="page-content bg-light">
         <!-- Top Header -->
-        @include('partials.header')
+        @include('partials.admin.header');
         <!-- Top Header -->
 
         <div class="container-fluid">
           <div class="layout-specing" style="padding: 50px 14px 24px!important">
             <div class="d-md-flex justify-content-between align-items-center">
-              <h5 class="mb-0">Admin / Tata Usaha</h5>
+              <h5 class="mb-0">Kepala Program Studi</h5>
 
               <nav aria-label="breadcrumb" class="d-inline-block">
                 <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -34,7 +36,7 @@
                     <a href="index.html">Dashboard</a>
                   </li>
                   <li class="breadcrumb-item text-capitalize">
-                    <a href="#">Data Admin/Tata Usaha</a>
+                    <a href="#">Kepala Program Studi</a>
                   </li>
                   <!-- <li
                     class="breadcrumb-item text-capitalize active"
@@ -66,37 +68,19 @@
                           class="text-center border-bottom p-3"
                           style="min-width: 220px"
                         >
-                          Nama Admin
+                          Nama
                         </th>
                         <th
                           class="text-center border-bottom p-3"
                           style="min-width: 220px"
                         >
-                          NIP / NIS
-                        </th>
-                        <th
-                          class="text-center border-bottom p-3"
-                          style="min-width: 200px"
-                        >
-                          Email
-                        </th>
-                        <th
-                          class="text-center border-bottom p-3"
-                          style="min-width: 200px"
-                        >
                           Program Studi
                         </th>
                         <th
                           class="text-center border-bottom p-3"
-                          style="min-width: 200px"
+                          style="min-width: 220px"
                         >
                           Fakultas
-                        </th>
-                        <th
-                          class="text-center border-bottom p-3"
-                          style="min-width: 200px"
-                        >
-                          Status
                         </th>
                         <th
                           class="text-center border-bottom p-3"
@@ -108,41 +92,24 @@
                     </thead>
                     <tbody>
                       <!-- Start -->
+                      @foreach ($kaprodi as $kaprodi)
                       <tr>
                         <th class="p-3">1</th>
                         <td class="p-3">
+                          <!-- <a href="#" class="text-center"> -->
                           <div class="d-flex align-items-center">
-                            <span class="ms-2">Diah Aufa Arini</span>
+                            <span class="ms-2">{{ $kaprodi->nama }}</span>
+                          </div>
+                          <!-- </a> -->
+                        </td>
+                        <td class="p-3">
+                          <div class="d-flex align-items-center">
+                            <span class="ms-2">{{ $kaprodi->prodi->nama_prodi }}</span>
                           </div>
                         </td>
                         <td class="p-3">
                           <div class="d-flex align-items-center">
-                            <span class="ms-2">0041785423</span>
-                          </div>
-                        </td>
-                        <td class="p-3">
-                          <div class="d-flex align-items-center">
-                            <span class="ms-2"
-                              >diah.aufa@staff.unsika.ac.id</span
-                            >
-                          </div>
-                        </td>
-                        <td class="p-3">
-                          <div class="d-flex align-items-center">
-                            <span class="ms-2">Teknik Informatika</span>
-                          </div>
-                        </td>
-                        <td class="p-3">
-                          <div class="d-flex align-items-center">
-                            <span class="ms-2">Fakultas Ilmu Komputer</span>
-                          </div>
-                        </td>
-                        <td class="p-3">
-                          <div
-                            class="d-flex badge bg-soft-success rounded px-3 py-1"
-                            style="align-items: center; justify-content: center"
-                          >
-                            <span>Aktif</span>
+                            <span class="ms-2">{{ $kaprodi->prodi->fakultas->nama }}</span>
                           </div>
                         </td>
                         <td class="text-center p-3">
@@ -164,6 +131,7 @@
                             >Hapus</a -->
                         </td>
                       </tr>
+                      @endforeach
                       <!-- End -->
                     </tbody>
                   </table>
@@ -215,7 +183,7 @@
         <!--end container-->
 
         <!-- Footer Start -->
-        @include('partials.footer')
+        @include('partials.admin.footer');
         <!--end footer-->
         <!-- End -->
       </main>
@@ -234,7 +202,9 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header border-bottom p-3">
-            <h5 class="modal-title" id="tambahmodel">Formulir Dosen</h5>
+            <h5 class="modal-title" id="tambahmodel">
+              Formulir Kepala Program Studi
+            </h5>
             <button
               type="button"
               class="btn btn-icon btn-close"
@@ -255,70 +225,9 @@
                         >Nama <span class="text-danger">*</span></label
                       >
                       <input
-                        name="namadosen"
-                        id="namadosen"
+                        name="name"
+                        id="name"
                         type="text"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="mb-3">
-                      <label class="form-label"
-                        >NIP / NIS <span class="text-danger">*</span></label
-                      >
-                      <input
-                        name="nis"
-                        id="nis"
-                        type="number"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="mb-3">
-                      <label class="form-label"
-                        >Alamat Email <span class="text-danger">*</span></label
-                      >
-                      <input
-                        name="email"
-                        id="email"
-                        type="email"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="mb-3">
-                      <label class="form-label"
-                        >Password <span class="text-danger">*</span></label
-                      >
-                      <input
-                        name="password"
-                        id="password"
-                        type="password"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="mb-3">
-                      <label class="form-label"
-                        >Konfirm Password
-                        <span class="text-danger">*</span></label
-                      >
-                      <input
-                        name="password"
-                        id="password"
-                        type="password"
                         class="form-control"
                       />
                     </div>
@@ -331,8 +240,8 @@
                         >Program Studi <span class="text-danger">*</span></label
                       >
                       <input
-                        name="prodi"
-                        id="prodi"
+                        name="name"
+                        id="name"
                         type="text"
                         class="form-control"
                       />
@@ -343,20 +252,32 @@
                   <div class="col-12">
                     <div class="mb-3">
                       <label class="form-label"
-                        >Fakultas <span class="text-danger">*</span></label
+                        >Pilih Fakultas
+                        <span class="text-danger">*</span></label
                       >
-                      <input
-                        name="fakultas"
-                        id="fakultas"
-                        type="text"
-                        class="form-control"
-                      />
+                      <select class="form-control">
+                        <option value="fasilkom">Fakultas Ilmu Komputer</option>
+                        <option value="fisip">
+                          Fakultas Ilmu Sosial dan Politik
+                        </option>
+                        <option value="fikes">Fakultas Ilmu Kesehatan</option>
+                        <option value="fkip">
+                          Fakultas Keguruan dan Ilmu Pendidikan
+                        </option>
+                        <option value="ft">Fakultas Teknik</option>
+                        <option value="fai">Fakultas Agama Islam</option>
+                        <option value="fh">Fakultas Hukum</option>
+                        <option value="fe">Fakultas Ekonomi</option>
+                        <option value="fp">Fakultas Pertanian</option>
+                      </select>
                     </div>
                   </div>
                 </div>
                 <!--end col-->
                 <div class="text-end">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type="submit" class="btn btn-primary">
+                    Tambah Program Studi
+                  </button>
                 </div>
                 <!--end col-->
                 <!-- </div> -->
@@ -585,7 +506,7 @@
       </div>
     </div>
     <!-- Offcanvas End -->
-
   </body>
   @endsection
+
 

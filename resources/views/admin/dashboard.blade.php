@@ -14,13 +14,13 @@
 
   <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
-    @include('partials.sidebar')
+    @include('partials.admin.sidebar')
     <!-- sidebar-wrapper  -->
 
     <!-- Start Page Content -->
     <main class="page-content bg-light">
       <!-- Top Header -->
-      @include('partials.header')
+      @include('partials.admin.header')
       <!-- Top Header -->
 
       <div class="container-fluid">
@@ -750,7 +750,7 @@
       <!--end container-->
 
       <!-- Footer Start -->
-      @include('partials.footer')
+      @include('partials.admin.footer')
       <!--end footer-->
       <!-- End -->
     </main>

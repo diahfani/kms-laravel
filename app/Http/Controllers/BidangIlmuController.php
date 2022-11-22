@@ -11,7 +11,7 @@ class BidangIlmuController extends Controller
 {
     public function index()
     {
-        return view('bidang_ilmu', [
+        return view('admin/bidang_ilmu', [
             'title' => 'Bidang Ilmu',
             'bidang_ilmu' => BidangIlmu::all(),
             'fakultas' => Fakultas::all(),

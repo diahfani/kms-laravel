@@ -8,7 +8,7 @@ class AdminProdiController extends Controller
 {
     public function index()
     {
-        return view('admin_prodi', [
+        return view('admin/admin_prodi', [
             'title' => 'Admin Program Studi'
         ]);
     }
