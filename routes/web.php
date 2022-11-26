@@ -46,7 +46,9 @@ Route::resource('/kepala-prodi/posts', KaprodiController::class);
 Route::get('admin-prodi', [AdminProdiController::class, 'index'])->name('admin-prodi');
 Route::resource('/admin-prodi/posts', AdminProdiController::class);
 Route::get('dosen', [DosenController::class, 'index'])->name('dosen');
+Route::resource('/dosen/posts', DosenController::class);
 Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+Route::resource('/mahasiswa/posts', MahasiswaController::class);
 Route::get('admin', [AdminController::class, 'admin'])->name('admin');
 Route::get('profile', [AdminController::class, 'profile'])->name('profile');
 
